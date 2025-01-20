@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="script.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <title>Loïc Matthey</title>
+</head>
+<body>
+    <navbar id="navbar">
+        <a href="#home">Home</a>
+        <a href="#about">Home</a>
+        <a href="#skills">Home</a>
+        <a href="#project">Home</a>
+    </navbar>
+    <div id="home">
+        <h1>Hello, I'm </h1>
+        <h1>Loïc Matthey</h1>
+        <h2>I'm a <span class="auto-type"></span></h2>
+        <div id="icons">
+            <a class="icon" id="discord" href='https://discord.com/users/683602319924920342' target="_blank">
+                <img src="icons8-discord(1).svg" alt="">
+            </a>
+            <a class="icon" id="instagram" href='https://instagram.com/lm_mc.biblo' target="_blank">
+                <img src="icons8-instagram(1).svg" alt="">
+            </a>
+            <a class="icon"id="github" href='https://github.com/JavamilesIII' target="_blank">
+                <img src="icons8-github(1).svg" alt="">
+            </a>
+            <a class="icon" id="linkedin" href='https://www.linkedin.com/in/lo%C3%AFc-matthey-aa8774331/' target="_blank">
+                <img src="icons8-linkedin-circled-96.png" alt="">
+            </a>
+            <a class="icon" id="mail" href="mailto:loic.matthey16@gmail.com">
+                <img src="icons8-circled-envelope-96.png" alt="">
+            </a>
+        </div>
+    </div>
+
+
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+    <script>
+        var typed = new Typed(".auto-type", {
+            strings: ["Web Developer", "Web Designer", "UI/UX Designer"],
+            typeSpeed: 150,
+            backSpeed: 150,
+            loop: true
+        })
+
+
+        window.onscroll = function() {myFunction()};
+        window.onload = function(){
+            sticky = navbar.offsetTop;
+        }
+		// Get the navbar
+		var navbar = document.getElementById("navbar");
+
+		// Get the offset position of the navbar
+		var sticky = navbar.offsetTop;
+
+		// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
+		function myFunction() {
+            console.log("OffsetTop:", sticky, "PageYOffset:", window.pageYOffset); // Debugging
+			if (window.pageYOffset > sticky) {
+				navbar.classList.add("sticky")
+			} else {
+				navbar.classList.remove("sticky");
+			}
+		}
+    </script>
+</body>
+</html>

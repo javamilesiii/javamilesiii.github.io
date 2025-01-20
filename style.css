@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    background-color: #151515;
+    color: #ffffff;
+}
+
+#home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 50vh;
+}
+#home h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+navbar {
+    background-color: #ff5e52;
+    color: #ffffff;
+    padding: 1rem;
+    display: flex;
+    justify-content:space-evenly;
+    align-items: center;
+    width: 100%;
+}
+navbar a {
+    color: #ffffff;
+    text-decoration: none;
+    margin: 0 1rem;
+    font-size: 1.2rem;
+}
+
+.sticky{
+    position:fixed;
+    top:0px;
+    z-index:2;
+}
+#icons{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 50px;
+}
+.icon {
+    background-color: white;
+    margin: 0 20px;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.icon:hover {
+    cursor: pointer;
+}
+
+
+@media only screen and (max-height: 1150px) {
+    navbar {
+        margin-bottom: 200px;
+    }
+    
+}
+@media (max-height: 600px) {
+    #home {
+        justify-content: flex-start; /* Prevents the content from going further up */
+        min-height: 600px; /* Ensures the section doesn't shrink below 600px */
+    }
+}
