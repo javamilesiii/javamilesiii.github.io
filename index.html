@@ -1,94 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="script.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Jersey+15&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>Loïc Matthey</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Loïc Matthey | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
 </head>
-<body>
-    <navbar id="navbar">
-        <a href="#home">Home</a>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#work">Work</a>
-        <a href="#project">Project</a>
-    </navbar>
-    <div id="home" class="sections">
-        <h1>Hello, I'm </h1>
-        <h1 style="color: #ff5e52;">Loïc Matthey</h1>
-        <h2>I'm a <span class="auto-type"></span></h2>
-        <div id="icons">
-            <a class="icon" id="discord" href='https://discord.com/users/683602319924920342' target="_blank">
-                <img src="icons8-discord(1).svg" alt="">
-            </a>
-            <a class="icon" id="instagram" href='https://instagram.com/lm_mc.biblo' target="_blank">
-                <img src="icons8-instagram(1).svg" alt="">
-            </a>
-            <a class="icon"id="github" href='https://github.com/JavamilesIII' target="_blank">
-                <img src="icons8-github(1).svg" alt="">
-            </a>
-            <a class="icon" id="linkedin" href='https://www.linkedin.com/in/lo%C3%AFc-matthey-aa8774331/' target="_blank">
-                <img src="icons8-linkedin-circled-96.png" alt="">
-            </a>
-            <a class="icon" id="mail" href="mailto:loic.matthey16@gmail.com">
-                <img src="icons8-circled-envelope-96.png" alt="">
-            </a>
-        </div>
-    </div>
-    <div id="about">
-        <div id="article">
-            <h1>About me</h1>
-            <p>I'm Loïc Matthey, a 17-year-old student at the computer science middle school in Basel. My passion for programming started at 13 with an Arduino project, and since then, I’ve explored languages like C++, PHP, and Python. Java is my favorite, and I’m currently developing my own app.</p>
-            <p>Beyond coding, I’ve been an active scout since 2015 and now serve as a leader. I love problem-solving, learning new technologies, and taking on challenges in both programming and scouting.</p>
-        </div>
-    </div>
-    <div id="skills">
-        <h1>My Skills</h1>
-        <div id="skillz">
-            <div class="skill">
+<body class="bg-gray-900 text-gray-100 font-sans scroll-smooth">
 
+<!-- Navigation -->
+<nav class="bg-gray-800 shadow">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between h-16 items-center">
+            <div class="flex items-center">
+                <img class="h-10 w-auto animate-bounce" src="assets/logo.png" alt="Logo">
+                <span class="text-rose-600 font-bold text-xl ml-2">Loïc Matthey</span>
+            </div>
+            <div class="flex space-x-4">
+                <a href="#about" class="bg-rose-600 px-3 py-2 rounded text-sm hover:bg-red-400 transition">About</a>
+                <a href="#projects" class="bg-rose-600 px-3 py-2 rounded text-sm hover:bg-red-400 transition">Projects</a>
+                <a href="#contact" class="bg-rose-600 px-3 py-2 rounded text-sm hover:bg-red-400 transition">Contact</a>
             </div>
         </div>
     </div>
-    <footer>
-        <p>All icons from <a href="https://www.icons8.de" target="_blank">Icons8</a></p>
-        <p>All images from <a href="https://www.unsplash.com" target="_blank">Unsplash</a></p>
-        <p>Copyright © 2025 Loïc Matthey. All rights reserved.</p>
-    </footer>
+</nav>
 
-    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
-    <script>
-        var typed = new Typed(".auto-type", {
-            strings: ["Backend Developer", "Java Developer", "Web Developer"],
-            typeSpeed: 150,
-            backSpeed: 150,
-            loop: true
-        })
+<!-- Hero Section -->
+<section class="text-center py-16">
+    <h1 class="text-4xl font-extrabold text-rose-600 mb-4 fade-in">Hi, I'm Loïc Matthey</h1>
+    <p id="typing" class="text-gray-400 text-lg max-w-xl mx-auto"></p>
+    <button class="mt-6 bg-rose-600 hover:bg-red-400 px-6 py-2 rounded text-white font-semibold transition transform hover:scale-105">Download CV</button>
+</section>
 
+<!-- About -->
+<section id="about" class="py-16 bg-gray-800 reveal">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl text-amber-500 font-bold mb-4">About Me</h2>
+        <p class="text-gray-400">I am studying Computer Science with a passion for building modern websites.</p>
+    </div>
+</section>
 
-        /*window.onscroll = function() {myFunction()};
-        window.onload = function(){
-            sticky = navbar.offsetTop;
+<!-- Projects -->
+<section id="projects" class="py-16 reveal">
+    <div class="max-w-6xl mx-auto text-center">
+        <h2 class="text-2xl text-amber-500 font-bold mb-8">Projects</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-gray-800 rounded shadow p-4 hover:scale-105 transition">
+                <h3 class="text-lg font-semibold">Project One</h3>
+                <p class="text-gray-400 mt-2">React + Tailwind web app.</p>
+            </div>
+            <div class="bg-gray-800 rounded shadow p-4 hover:scale-105 transition">
+                <h3 class="text-lg font-semibold">Project Two</h3>
+                <p class="text-gray-400 mt-2">Minimal landing page design.</p>
+            </div>
+            <div class="bg-gray-800 rounded shadow p-4 hover:scale-105 transition">
+                <h3 class="text-lg font-semibold">Project Three</h3>
+                <p class="text-gray-400 mt-2">Experimental JS game.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="py-16 bg-gray-800 reveal">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl text-amber-500 font-bold mb-4">Contact Me</h2>
+        <p class="text-gray-400 mb-4">Let's work together!</p>
+        <form class="flex flex-col space-y-4 max-w-md mx-auto">
+            <input type="text" placeholder="Name" class="bg-gray-700 p-3 rounded focus:ring-rose-600">
+            <input type="email" placeholder="Email" class="bg-gray-700 p-3 rounded focus:ring-rose-600">
+            <textarea placeholder="Message" class="bg-gray-700 p-3 rounded focus:ring-rose-600"></textarea>
+            <button type="submit" class="bg-rose-600 hover:bg-red-400 px-4 py-2 rounded text-white transition transform hover:scale-105">Send</button>
+        </form>
+    </div>
+</section>
+
+<footer class="text-center py-6 text-gray-400 text-sm">
+    © 2025 Loïc Matthey. All rights reserved.
+</footer>
+
+<script>
+    // Typing animation in Hero
+    const typing = document.getElementById('typing');
+    const words = ["Web Developer", "Problem Solver", "Tech Enthusiast"];
+    let i = 0, j = 0, isDeleting = false;
+
+    function type() {
+        typing.innerHTML = "A "+ words[i].substring(0, j);
+        if (!isDeleting && j < words[i].length) {
+            j++;
+            setTimeout(type, 100);
+        } else if (isDeleting && j > 0) {
+            j--;
+            setTimeout(type, 50);
+        } else {
+            isDeleting = !isDeleting;
+            if (!isDeleting) i = (i + 1) % words.length;
+            setTimeout(type, 1000);
         }
-		// Get the navbar
-		var navbar = document.getElementById("navbar");
+    }
+    type();
 
-		// Get the offset position of the navbar
-		var sticky = navbar.offsetTop;
+    // ScrollReveal for sections
+    ScrollReveal().reveal('.reveal', {
+        duration: 1000,
+        distance: '50px',
+        easing: 'ease-out',
+        origin: 'bottom',
+        reset: false
+    });
+</script>
 
-		// Add the sticky class to the navbar when you reach its scroll position. Remove "sticky" when you leave the scroll position
-		function myFunction() {
-            console.log("OffsetTop:", sticky, "PageYOffset:", window.pageYOffset); // Debugging
-			if (window.pageYOffset > sticky) {
-				navbar.classList.add("sticky")
-			} else {
-				navbar.classList.remove("sticky");
-			}
-		}*/
-    </script>
 </body>
 </html>
