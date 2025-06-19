@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Loïc Matthey | Portfolio</title>
+    <title>Loïc Matthey | Bewerbungsprofil</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/scrollreveal"></script>
+    <script src="mailer.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans scroll-smooth">
-
-<!-- Navigation -->
 <nav class="bg-gray-800 shadow">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 items-center">
@@ -18,76 +18,170 @@
                 <span class="text-rose-600 font-bold text-xl ml-2">Loïc Matthey</span>
             </div>
             <div class="flex space-x-4">
-                <a href="#about" class="bg-rose-600 px-3 py-2 rounded text-sm hover:bg-red-400 transition">About</a>
-                <a href="#projects" class="bg-rose-600 px-3 py-2 rounded text-sm hover:bg-red-400 transition">Projects</a>
-                <a href="#contact" class="bg-rose-600 px-3 py-2 rounded text-sm hover:bg-red-400 transition">Contact</a>
+                <a href="#about" class="bg-rose-600 px-3 py-2 rounded text-sm hover:bg-red-400 transition">Über mich</a>
+                <a href="#projects" class="bg-rose-600 px-3 py-2 rounded text-sm hover:bg-red-400 transition">Projekte</a>
+                <a href="#skills" class="bg-rose-600 px-3 py-2 rounded text-sm hover:bg-red-400 transition">Fähigkeiten</a>
+                <a href="#grades" class="bg-rose-600 px-3 py-2 rounded text-sm hover:bg-red-400 transition">Noten</a>
+                <a href="#contact" class="bg-rose-600 px-3 py-2 rounded text-sm hover:bg-red-400 transition">Kontakt</a>
             </div>
         </div>
     </div>
 </nav>
-
-<!-- Hero Section -->
-<section class="text-center py-16">
-    <h1 class="text-4xl font-extrabold text-rose-600 mb-4 fade-in">Hi, I'm Loïc Matthey</h1>
-    <p id="typing" class="text-gray-400 text-lg max-w-xl mx-auto"></p>
-    <button class="mt-6 bg-rose-600 hover:bg-red-400 px-6 py-2 rounded text-white font-semibold transition transform hover:scale-105">Download CV</button>
+<div id="progressBar" class="fixed top-0 left-0 h-1 bg-rose-600 z-50"></div>
+<section class="h-screen flex flex-col items-center justify-center bg-gray-900 reveal text-center">
+    <h1 class="text-4xl font-extrabold text-rose-600 mb-4 fade-in glitch" data-text="Hallo, ich bin Loïc Matthey">Hallo, ich bin Loïc Matthey</h1>
+    <p id="typing" class="text-gray-400 text-lg max-w-xl mx-auto mb-6"></p>
+    <a href="assets/lebenslauf.pdf" download class="bg-rose-600 hover:bg-red-400 px-6 py-2 rounded text-white font-semibold transition transform hover:scale-105 relative overflow-hidden">
+        Lebenslauf herunterladen
+        <span class="absolute inset-0 bg-white opacity-10 animate-pulse"></span>
+    </a>
 </section>
-
-<!-- About -->
-<section id="about" class="py-16 bg-gray-800 reveal">
+<section id="about" class="py-32 bg-gray-800 reveal">
     <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-2xl text-amber-500 font-bold mb-4">About Me</h2>
-        <p class="text-gray-400">I am studying Computer Science with a passion for building modern websites.</p>
+        <h2 class="text-3xl text-amber-500 font-bold mb-6">Über mich</h2>
+        <p class="text-gray-400 text-lg leading-relaxed">
+            Ich bin Schüler an der Informatikmittelschule und ein motivierter angehender Applikationsentwickler mit einem starken Fokus auf Web- und Softwareentwicklung. Besonders begeistert bin ich von Webseiten und Web-Apps sowie der Gestaltung intuitiver Benutzeroberflächen im Frontend.
+            <br><br>
+            Durch eigene Projekte und schulische Arbeiten konnte ich praktische Erfahrung in Java, PHP, HTML, CSS, JavaScript und SQL sammeln. Ich habe auch erste Berührungspunkte mit Python und arbeite aktuell hauptsächlich unter Linux. Mein Ziel ist es, kreative und effektive Lösungen für anspruchsvolle Herausforderungen zu entwickeln.
+        </p>
     </div>
 </section>
-
-<!-- Projects -->
-<section id="projects" class="py-16 reveal">
+<section id="projects" class="py-32 bg-gray-900 reveal">
     <div class="max-w-6xl mx-auto text-center">
-        <h2 class="text-2xl text-amber-500 font-bold mb-8">Projects</h2>
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-gray-800 rounded shadow p-4 hover:scale-105 transition">
-                <h3 class="text-lg font-semibold">Project One</h3>
-                <p class="text-gray-400 mt-2">React + Tailwind web app.</p>
+        <h2 class="text-3xl text-amber-500 font-bold mb-12">Meine GitHub-Projekte</h2>
+        <div id="repo-list" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
+        <p class="text-gray-400 mt-4">Meine GitHub Seite: <a href="https://github.com/javamilesiii" target="_blank" class="text-rose-600 underline">GitHub Profil</a></p>
+    </div>
+</section>
+<section id="skills" class="py-32 bg-gray-800 reveal">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl text-amber-500 font-bold mb-10">Meine Fähigkeiten</h2>
+        <div class="space-y-6 text-left">
+            <div>
+                <p class="text-gray-300 mb-1">HTML <span class="float-right text-gray-400">90%</span></p>
+                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 90%;"></div>
+                </div>
             </div>
-            <div class="bg-gray-800 rounded shadow p-4 hover:scale-105 transition">
-                <h3 class="text-lg font-semibold">Project Two</h3>
-                <p class="text-gray-400 mt-2">Minimal landing page design.</p>
+            <div>
+                <p class="text-gray-300 mb-1">CSS <span class="float-right text-gray-400">80%</span></p>
+                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 80%;"></div>
+                </div>
             </div>
-            <div class="bg-gray-800 rounded shadow p-4 hover:scale-105 transition">
-                <h3 class="text-lg font-semibold">Project Three</h3>
-                <p class="text-gray-400 mt-2">Experimental JS game.</p>
+            <div>
+                <p class="text-gray-300 mb-1">JavaScript <span class="float-right text-gray-400">70%</span></p>
+                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 70%;"></div>
+                </div>
+            </div>
+            <div>
+                <p class="text-gray-300 mb-1">Git & GitHub <span class="float-right text-gray-400">80%</span></p>
+                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div>
+                <p class="text-gray-300 mb-1">Java <span class="float-right text-gray-400">80%</span></p>
+                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div>
+                <p class="text-gray-300 mb-1">Python <span class="float-right text-gray-400">40%</span></p>
+                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 40%;"></div>
+                </div>
+            </div>
+            <div>
+                <p class="text-gray-300 mb-1">PHP <span class="float-right text-gray-400">65%</span></p>
+                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 65%;"></div>
+                </div>
+            </div>
+            <div>
+                <p class="text-gray-300 mb-1">IntelliJ IDEA <span class="float-right text-gray-400">80%</span></p>
+                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 80%;"></div>
+                </div>
+            </div>
+            <div>
+                <p class="text-gray-300 mb-1">CMS (z.B. WordPress) <span class="float-right text-gray-400">60%</span></p>
+                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 60%;"></div>
+                </div>
+            </div>
+            <div>
+                <p class="text-gray-300 mb-1">SQL <span class="float-right text-gray-400">70%</span></p>
+                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 70%;"></div>
+                </div>
+            </div>
+            <div>
+                <p class="text-gray-300 mb-1">MS Office <span class="float-right text-gray-400">85%</span></p>
+                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 85%;"></div>
+                </div>
+            </div>
+            <div>
+                <p class="text-gray-300 mb-1">Windows <span class="float-right text-gray-400">90%</span></p>
+                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 90%;"></div>
+                </div>
+            </div>
+            <div>
+                <p class="text-gray-300 mb-1">Linux <span class="float-right text-gray-400">60%</span></p>
+                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 60%;"></div>
+                </div>
+            </div>
+            <div>
+                <p class="text-gray-300 mb-1">React <span class="float-right text-gray-400">40%</span></p>
+                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 40%;"></div>
+                </div>
             </div>
         </div>
     </div>
 </section>
-
-<!-- Contact -->
-<section id="contact" class="py-16 bg-gray-800 reveal">
+<section id="grades" class="py-32 bg-gray-900 reveal">
     <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-2xl text-amber-500 font-bold mb-4">Contact Me</h2>
-        <p class="text-gray-400 mb-4">Let's work together!</p>
-        <form class="flex flex-col space-y-4 max-w-md mx-auto">
-            <input type="text" placeholder="Name" class="bg-gray-700 p-3 rounded focus:ring-rose-600">
-            <input type="email" placeholder="Email" class="bg-gray-700 p-3 rounded focus:ring-rose-600">
-            <textarea placeholder="Message" class="bg-gray-700 p-3 rounded focus:ring-rose-600"></textarea>
-            <button type="submit" class="bg-rose-600 hover:bg-red-400 px-4 py-2 rounded text-white transition transform hover:scale-105">Send</button>
-        </form>
+        <h2 class="text-3xl text-amber-500 font-bold mb-6">Modulnoten</h2>
+        <a href="assets/ModulNoten.pdf" download class="text-rose-600 underline">Modulnoten Übersicht herunterladen (PDF)</a>
     </div>
 </section>
-
+<section id="contact" class="py-32 bg-gray-800">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-3xl text-amber-500 font-bold mb-6">Kontakt</h2>
+        <p class="text-gray-400 text-lg mb-6">Interesse an Zusammenarbeit? Lass uns gemeinsam etwas Grossartiges schaffen.</p>
+        <form id="contactForm" class="flex flex-col space-y-4 max-w-md mx-auto">
+            <input type="text" name="user_name" placeholder="Name" required
+                   class="bg-gray-700 text-white p-3 rounded focus:ring-2 focus:ring-rose-600 focus:outline-none">
+            <input type="email" name="user_email" placeholder="E-Mail" required
+                   class="bg-gray-700 text-white p-3 rounded focus:ring-2 focus:ring-rose-600 focus:outline-none">
+            <textarea name="message" placeholder="Nachricht" rows="4" required
+                      class="bg-gray-700 text-white p-3 rounded focus:ring-2 focus:ring-rose-600 focus:outline-none resize-none"></textarea>
+            <button type="submit" id="submitBtn"
+                    class="bg-rose-600 hover:bg-red-400 px-4 py-2 rounded text-white transition transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+                <span id="buttonText">Absenden</span>
+            </button>
+        </form>
+        <div id="statusMessage" class="mt-4 p-3 rounded hidden"></div>
+    </div>
+</section>
+<button id="topBtn" class="fixed bottom-6 right-6 bg-rose-600 text-white p-3 rounded-full shadow-lg hover:bg-red-400 transition hidden z-50">
+    &uarr; Nach oben
+</button>
 <footer class="text-center py-6 text-gray-400 text-sm">
-    © 2025 Loïc Matthey. All rights reserved.
+    &copy; 2025 Loïc Matthey. Alle Rechte vorbehalten.
 </footer>
-
 <script>
-    // Typing animation in Hero
     const typing = document.getElementById('typing');
-    const words = ["Web Developer", "Problem Solver", "Tech Enthusiast"];
+    const words = ["Webentwickler", "Software Entwickler", "Informatikmittelschüler", "Frontend Entwickler", "Backend Entwickler"];
     let i = 0, j = 0, isDeleting = false;
 
     function type() {
-        typing.innerHTML = "A "+ words[i].substring(0, j);
+        typing.innerHTML = "Ich bin ein " + words[i].substring(0, j);
         if (!isDeleting && j < words[i].length) {
             j++;
             setTimeout(type, 100);
@@ -102,15 +196,55 @@
     }
     type();
 
-    // ScrollReveal for sections
     ScrollReveal().reveal('.reveal', {
         duration: 1000,
         distance: '50px',
         easing: 'ease-out',
         origin: 'bottom',
-        reset: false
+        reset: false,
+        scale: 0.9
+    });
+
+    const repoList = document.getElementById('repo-list');
+    fetch('https://api.github.com/users/javamilesiii/repos')
+        .then(res => res.json())
+        .then(data => {
+            data.slice(0, 6).forEach(repo => {
+                const repoCard = document.createElement('div');
+                repoCard.className = 'bg-gray-800 rounded shadow p-4 hover:rotate-y-180 transform transition-transform duration-700';
+                repoCard.innerHTML = `
+                    <h3 class="text-lg font-semibold text-gray-100">${repo.name}</h3>
+                    <p class="text-gray-400 mt-2">${repo.description || 'Keine Beschreibung vorhanden.'}</p>
+                    <a href="${repo.html_url}" target="_blank" class="text-rose-600 mt-2 inline-block">Auf GitHub ansehen →</a>
+                `;
+                repoList.appendChild(repoCard);
+            });
+        })
+        .catch(err => {
+            repoList.innerHTML = '<p class="text-gray-400">Repos konnten nicht geladen werden.</p>';
+        });
+
+    const topBtn = document.getElementById('topBtn');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 300) {
+            topBtn.classList.remove('hidden');
+        } else {
+            topBtn.classList.add('hidden');
+        }
+    });
+    topBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    document.querySelectorAll('#skills .w-full > div').forEach(bar => {
+        const width = bar.style.width;
+        bar.style.width = '0';
+        setTimeout(() => { bar.style.width = width; }, 500);
+    });
+    window.addEventListener('scroll', () => {
+        const progress = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        document.getElementById('progressBar').style.width = progress + '%';
     });
 </script>
-
 </body>
 </html>
