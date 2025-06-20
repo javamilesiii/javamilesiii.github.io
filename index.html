@@ -10,172 +10,208 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 <body class="bg-gray-900 text-gray-100 font-sans scroll-smooth">
-<nav class="bg-gray-800 shadow">
+<nav class="bg-gray-800 shadow fixed w-full top-0 z-50">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16 items-center">
             <div class="flex items-center">
-                <img class="h-10 w-auto animate-bounce" src="assets/logo.png" alt="Logo">
-                <span class="text-rose-600 font-bold text-xl ml-2">Loïc Matthey</span>
+                <img class="h-8 w-auto sm:h-10 animate-bounce" src="assets/logo.png" alt="Logo">
+                <span class="text-rose-600 font-bold text-lg sm:text-xl ml-2">Loïc Matthey</span>
             </div>
-            <div class="flex space-x-4">
-                <a href="#about" class="bg-rose-600 px-3 py-2 rounded text-sm hover:bg-red-400 transition">Über mich</a>
-                <a href="#projects" class="bg-rose-600 px-3 py-2 rounded text-sm hover:bg-red-400 transition">Projekte</a>
-                <a href="#skills" class="bg-rose-600 px-3 py-2 rounded text-sm hover:bg-red-400 transition">Fähigkeiten</a>
-                <a href="#grades" class="bg-rose-600 px-3 py-2 rounded text-sm hover:bg-red-400 transition">Noten</a>
-                <a href="#contact" class="bg-rose-600 px-3 py-2 rounded text-sm hover:bg-red-400 transition">Kontakt</a>
+            <div class="hidden md:flex space-x-2 lg:space-x-4">
+                <a href="#about" class="bg-rose-600 px-2 py-2 lg:px-3 rounded text-xs sm:text-sm hover:bg-red-400 transition">Über mich</a>
+                <a href="#projects" class="bg-rose-600 px-2 py-2 lg:px-3 rounded text-xs sm:text-sm hover:bg-red-400 transition">Projekte</a>
+                <a href="#skills" class="bg-rose-600 px-2 py-2 lg:px-3 rounded text-xs sm:text-sm hover:bg-red-400 transition">Fähigkeiten</a>
+                <a href="#grades" class="bg-rose-600 px-2 py-2 lg:px-3 rounded text-xs sm:text-sm hover:bg-red-400 transition">Noten</a>
+                <a href="#contact" class="bg-rose-600 px-2 py-2 lg:px-3 rounded text-xs sm:text-sm hover:bg-red-400 transition">Kontakt</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-300 hover:text-white focus:outline-none focus:text-white">
+                    <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
             </div>
         </div>
     </div>
+    <div id="mobile-menu" class="mobile-menu fixed top-16 left-0 w-full h-screen bg-gray-800 md:hidden z-40">
+        <div class="px-2 pt-2 pb-3 space-y-1">
+            <a href="#about" class="block bg-rose-600 px-3 py-2 rounded text-base hover:bg-red-400 transition mobile-menu-link">Über mich</a>
+            <a href="#projects" class="block bg-rose-600 px-3 py-2 rounded text-base hover:bg-red-400 transition mobile-menu-link">Projekte</a>
+            <a href="#skills" class="block bg-rose-600 px-3 py-2 rounded text-base hover:bg-red-400 transition mobile-menu-link">Fähigkeiten</a>
+            <a href="#grades" class="block bg-rose-600 px-3 py-2 rounded text-base hover:bg-red-400 transition mobile-menu-link">Noten</a>
+            <a href="#contact" class="block bg-rose-600 px-3 py-2 rounded text-base hover:bg-red-400 transition mobile-menu-link">Kontakt</a>
+        </div>
+    </div>
 </nav>
-<div id="progressBar" class="fixed top-0 left-0 h-1 bg-rose-600 z-50"></div>
-<section class="h-screen flex flex-col items-center justify-center bg-gray-900 reveal text-center">
-    <h1 class="text-4xl font-extrabold text-rose-600 mb-4 fade-in glitch" data-text="Hallo, ich bin Loïc Matthey">Hallo, ich bin Loïc Matthey</h1>
-    <p id="typing" class="text-gray-400 text-lg max-w-xl mx-auto mb-6"></p>
-    <a href="assets/lebenslauf.pdf" download class="bg-rose-600 hover:bg-red-400 px-6 py-2 rounded text-white font-semibold transition transform hover:scale-105 relative overflow-hidden">
+<div id="progressBar" class="fixed top-16 left-0 h-1 bg-rose-600 z-50"></div>
+<section class="min-h-screen flex flex-col items-center justify-center bg-gray-900 reveal text-center px-4 pt-16">
+    <h1 class="responsive-title font-extrabold text-rose-600 mb-4 fade-in glitch" data-text="Hallo, ich bin Loïc Matthey">Hallo, ich bin Loïc Matthey</h1>
+    <p id="typing" class="text-gray-400 responsive-subtitle max-w-xl mx-auto mb-6 min-h-[2rem]"></p>
+    <a href="assets/lebenslauf.pdf" download class="bg-rose-600 hover:bg-red-400 px-4 py-3 sm:px-6 rounded text-white font-semibold transition transform hover:scale-105 relative overflow-hidden text-sm sm:text-base">
         Lebenslauf herunterladen
         <span class="absolute inset-0 bg-white opacity-10 animate-pulse"></span>
     </a>
 </section>
-<section id="about" class="py-32 bg-gray-800 reveal">
-    <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl text-amber-500 font-bold mb-6">Über mich</h2>
-        <p class="text-gray-400 text-lg leading-relaxed">
+<section id="about" class="py-16 sm:py-24 lg:py-32 bg-gray-800 reveal">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl text-amber-500 font-bold mb-6">Über mich</h2>
+        <p class="text-gray-400 responsive-text leading-relaxed">
             Ich bin Schüler an der Informatikmittelschule und ein motivierter angehender Applikationsentwickler mit einem starken Fokus auf Web- und Softwareentwicklung. Besonders begeistert bin ich von Webseiten und Web-Apps sowie der Gestaltung intuitiver Benutzeroberflächen im Frontend.
             <br><br>
             Durch eigene Projekte und schulische Arbeiten konnte ich praktische Erfahrung in Java, PHP, HTML, CSS, JavaScript und SQL sammeln. Ich habe auch erste Berührungspunkte mit Python und arbeite aktuell hauptsächlich unter Linux. Mein Ziel ist es, kreative und effektive Lösungen für anspruchsvolle Herausforderungen zu entwickeln.
         </p>
     </div>
 </section>
-<section id="projects" class="py-32 bg-gray-900 reveal">
-    <div class="max-w-6xl mx-auto text-center">
-        <h2 class="text-3xl text-amber-500 font-bold mb-12">Meine GitHub-Projekte</h2>
-        <div id="repo-list" class="grid grid-cols-1 md:grid-cols-3 gap-8"></div>
-        <p class="text-gray-400 mt-4">Meine GitHub Seite: <a href="https://github.com/javamilesiii" target="_blank" class="text-rose-600 underline">GitHub Profil</a></p>
+<section id="projects" class="py-16 sm:py-24 lg:py-32 bg-gray-900 reveal">
+    <div class="max-w-6xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl text-amber-500 font-bold mb-8 sm:mb-12">Meine GitHub-Projekte</h2>
+        <div id="repo-list" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8"></div>
+        <p class="text-gray-400 mt-4 responsive-text">Meine GitHub Seite: <a href="https://github.com/javamilesiii" target="_blank" class="text-rose-600 underline">GitHub Profil</a></p>
     </div>
 </section>
-<section id="skills" class="py-32 bg-gray-800 reveal">
-    <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl text-amber-500 font-bold mb-10">Meine Fähigkeiten</h2>
-        <div class="space-y-6 text-left">
+<section id="skills" class="py-16 sm:py-24 lg:py-32 bg-gray-800 reveal">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl text-amber-500 font-bold mb-8 sm:mb-10">Meine Fähigkeiten</h2>
+        <div class="space-y-4 sm:space-y-6 text-left">
             <div>
-                <p class="text-gray-300 mb-1">HTML <span class="float-right text-gray-400">90%</span></p>
-                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
-                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 90%;"></div>
+                <p class="text-gray-300 mb-1 text-sm sm:text-base">HTML <span class="float-right text-gray-400">90%</span></p>
+                <div class="w-full bg-gray-700 rounded h-3 sm:h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-3 sm:h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left skill-bar" data-width="90%"></div>
                 </div>
             </div>
             <div>
-                <p class="text-gray-300 mb-1">CSS <span class="float-right text-gray-400">80%</span></p>
-                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
-                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 80%;"></div>
+                <p class="text-gray-300 mb-1 text-sm sm:text-base">CSS <span class="float-right text-gray-400">80%</span></p>
+                <div class="w-full bg-gray-700 rounded h-3 sm:h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-3 sm:h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left skill-bar" data-width="80%"></div>
                 </div>
             </div>
             <div>
-                <p class="text-gray-300 mb-1">JavaScript <span class="float-right text-gray-400">70%</span></p>
-                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
-                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 70%;"></div>
+                <p class="text-gray-300 mb-1 text-sm sm:text-base">JavaScript <span class="float-right text-gray-400">70%</span></p>
+                <div class="w-full bg-gray-700 rounded h-3 sm:h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-3 sm:h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left skill-bar" data-width="70%"></div>
                 </div>
             </div>
             <div>
-                <p class="text-gray-300 mb-1">Git & GitHub <span class="float-right text-gray-400">80%</span></p>
-                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
-                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 80%;"></div>
+                <p class="text-gray-300 mb-1 text-sm sm:text-base">Git & GitHub <span class="float-right text-gray-400">80%</span></p>
+                <div class="w-full bg-gray-700 rounded h-3 sm:h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-3 sm:h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left skill-bar" data-width="80%"></div>
                 </div>
             </div>
             <div>
-                <p class="text-gray-300 mb-1">Java <span class="float-right text-gray-400">80%</span></p>
-                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
-                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 80%;"></div>
+                <p class="text-gray-300 mb-1 text-sm sm:text-base">Java <span class="float-right text-gray-400">80%</span></p>
+                <div class="w-full bg-gray-700 rounded h-3 sm:h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-3 sm:h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left skill-bar" data-width="80%"></div>
                 </div>
             </div>
             <div>
-                <p class="text-gray-300 mb-1">Python <span class="float-right text-gray-400">40%</span></p>
-                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
-                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 40%;"></div>
+                <p class="text-gray-300 mb-1 text-sm sm:text-base">Python <span class="float-right text-gray-400">40%</span></p>
+                <div class="w-full bg-gray-700 rounded h-3 sm:h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-3 sm:h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left skill-bar" data-width="40%"></div>
                 </div>
             </div>
             <div>
-                <p class="text-gray-300 mb-1">PHP <span class="float-right text-gray-400">65%</span></p>
-                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
-                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 65%;"></div>
+                <p class="text-gray-300 mb-1 text-sm sm:text-base">PHP <span class="float-right text-gray-400">65%</span></p>
+                <div class="w-full bg-gray-700 rounded h-3 sm:h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-3 sm:h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left skill-bar" data-width="65%"></div>
                 </div>
             </div>
             <div>
-                <p class="text-gray-300 mb-1">IntelliJ IDEA <span class="float-right text-gray-400">80%</span></p>
-                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
-                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 80%;"></div>
+                <p class="text-gray-300 mb-1 text-sm sm:text-base">IntelliJ IDEA <span class="float-right text-gray-400">80%</span></p>
+                <div class="w-full bg-gray-700 rounded h-3 sm:h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-3 sm:h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left skill-bar" data-width="80%"></div>
                 </div>
             </div>
             <div>
-                <p class="text-gray-300 mb-1">CMS (z.B. WordPress) <span class="float-right text-gray-400">60%</span></p>
-                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
-                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 60%;"></div>
+                <p class="text-gray-300 mb-1 text-sm sm:text-base">CMS (z.B. WordPress) <span class="float-right text-gray-400">60%</span></p>
+                <div class="w-full bg-gray-700 rounded h-3 sm:h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-3 sm:h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left skill-bar" data-width="60%"></div>
                 </div>
             </div>
             <div>
-                <p class="text-gray-300 mb-1">SQL <span class="float-right text-gray-400">70%</span></p>
-                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
-                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 70%;"></div>
+                <p class="text-gray-300 mb-1 text-sm sm:text-base">SQL <span class="float-right text-gray-400">70%</span></p>
+                <div class="w-full bg-gray-700 rounded h-3 sm:h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-3 sm:h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left skill-bar" data-width="70%"></div>
                 </div>
             </div>
             <div>
-                <p class="text-gray-300 mb-1">MS Office <span class="float-right text-gray-400">85%</span></p>
-                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
-                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 85%;"></div>
+                <p class="text-gray-300 mb-1 text-sm sm:text-base">MS Office <span class="float-right text-gray-400">85%</span></p>
+                <div class="w-full bg-gray-700 rounded h-3 sm:h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-3 sm:h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left skill-bar" data-width="85%"></div>
                 </div>
             </div>
             <div>
-                <p class="text-gray-300 mb-1">Windows <span class="float-right text-gray-400">90%</span></p>
-                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
-                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 90%;"></div>
+                <p class="text-gray-300 mb-1 text-sm sm:text-base">Windows <span class="float-right text-gray-400">90%</span></p>
+                <div class="w-full bg-gray-700 rounded h-3 sm:h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-3 sm:h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left skill-bar" data-width="90%"></div>
                 </div>
             </div>
             <div>
-                <p class="text-gray-300 mb-1">Linux <span class="float-right text-gray-400">60%</span></p>
-                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
-                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 60%;"></div>
+                <p class="text-gray-300 mb-1 text-sm sm:text-base">Linux <span class="float-right text-gray-400">60%</span></p>
+                <div class="w-full bg-gray-700 rounded h-3 sm:h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-3 sm:h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left skill-bar" data-width="60%"></div>
                 </div>
             </div>
             <div>
-                <p class="text-gray-300 mb-1">React <span class="float-right text-gray-400">40%</span></p>
-                <div class="w-full bg-gray-700 rounded h-4 overflow-hidden">
-                    <div class="bg-rose-600 h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left" style="width: 40%;"></div>
+                <p class="text-gray-300 mb-1 text-sm sm:text-base">React <span class="float-right text-gray-400">40%</span></p>
+                <div class="w-full bg-gray-700 rounded h-3 sm:h-4 overflow-hidden">
+                    <div class="bg-rose-600 h-3 sm:h-4 rounded transition-all duration-500 hover:scale-x-105 origin-left skill-bar" data-width="40%"></div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<section id="grades" class="py-32 bg-gray-900 reveal">
-    <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl text-amber-500 font-bold mb-6">Modulnoten</h2>
-        <a href="assets/ModulNoten.pdf" download class="text-rose-600 underline">Modulnoten Übersicht herunterladen (PDF)</a>
+<section id="grades" class="py-16 sm:py-24 lg:py-32 bg-gray-900 reveal">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl text-amber-500 font-bold mb-6">Modulnoten</h2>
+        <a href="assets/ModulNoten.pdf" download class="text-rose-600 underline responsive-text">Modulnoten Übersicht herunterladen (PDF)</a>
     </div>
 </section>
-<section id="contact" class="py-32 bg-gray-800">
-    <div class="max-w-4xl mx-auto text-center">
-        <h2 class="text-3xl text-amber-500 font-bold mb-6">Kontakt</h2>
-        <p class="text-gray-400 text-lg mb-6">Interesse an Zusammenarbeit? Lass uns gemeinsam etwas Grossartiges schaffen.</p>
+<section id="contact" class="py-16 sm:py-24 lg:py-32 bg-gray-800">
+    <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
+        <h2 class="text-2xl sm:text-3xl text-amber-500 font-bold mb-6">Kontakt</h2>
+        <p class="text-gray-400 responsive-text mb-6">Interesse an Zusammenarbeit? Lass uns gemeinsam etwas Grossartiges schaffen.</p>
         <form id="contactForm" class="flex flex-col space-y-4 max-w-md mx-auto">
             <input type="text" name="user_name" placeholder="Name" required
-                   class="bg-gray-700 text-white p-3 rounded focus:ring-2 focus:ring-rose-600 focus:outline-none">
+                   class="bg-gray-700 text-white p-3 rounded focus:ring-2 focus:ring-rose-600 focus:outline-none text-sm sm:text-base">
             <input type="email" name="user_email" placeholder="E-Mail" required
-                   class="bg-gray-700 text-white p-3 rounded focus:ring-2 focus:ring-rose-600 focus:outline-none">
+                   class="bg-gray-700 text-white p-3 rounded focus:ring-2 focus:ring-rose-600 focus:outline-none text-sm sm:text-base">
             <textarea name="message" placeholder="Nachricht" rows="4" required
-                      class="bg-gray-700 text-white p-3 rounded focus:ring-2 focus:ring-rose-600 focus:outline-none resize-none"></textarea>
+                      class="bg-gray-700 text-white p-3 rounded focus:ring-2 focus:ring-rose-600 focus:outline-none resize-none text-sm sm:text-base"></textarea>
             <button type="submit" id="submitBtn"
-                    class="bg-rose-600 hover:bg-red-400 px-4 py-2 rounded text-white transition transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed">
+                    class="bg-rose-600 hover:bg-red-400 px-4 py-3 rounded text-white transition transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base">
                 <span id="buttonText">Absenden</span>
             </button>
         </form>
         <div id="statusMessage" class="mt-4 p-3 rounded hidden"></div>
     </div>
 </section>
-<button id="topBtn" class="fixed bottom-6 right-6 bg-rose-600 text-white p-3 rounded-full shadow-lg hover:bg-red-400 transition hidden z-50">
+<button id="topBtn" class="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 bg-rose-600 text-white p-2 sm:p-3 rounded-full shadow-lg hover:bg-red-400 transition hidden z-50 text-sm sm:text-base">
     &uarr; Nach oben
 </button>
-<footer class="text-center py-6 text-gray-400 text-sm">
+<footer class="text-center py-6 text-gray-400 text-xs sm:text-sm px-4">
     &copy; 2025 Loïc Matthey. Alle Rechte vorbehalten.
 </footer>
 <script>
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileMenuLinks = document.querySelectorAll('.mobile-menu-link');
+
+    mobileMenuButton.addEventListener('click', () => {
+        mobileMenu.classList.toggle('open');
+    });
+
+    mobileMenuLinks.forEach(link => {
+        link.addEventListener('click', () => {
+            mobileMenu.classList.remove('open');
+        });
+    });
+
+    document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && !mobileMenuButton.contains(e.target)) {
+            mobileMenu.classList.remove('open');
+        }
+    });
+
     const typing = document.getElementById('typing');
     const words = ["Webentwickler", "Software Entwickler", "Informatikmittelschüler", "Frontend Entwickler", "Backend Entwickler"];
     let i = 0, j = 0, isDeleting = false;
@@ -211,17 +247,17 @@
         .then(data => {
             data.slice(0, 6).forEach(repo => {
                 const repoCard = document.createElement('div');
-                repoCard.className = 'bg-gray-800 rounded shadow p-4 hover:rotate-y-180 transform transition-transform duration-700';
+                repoCard.className = 'bg-gray-800 rounded shadow p-4 hover:bg-gray-700 transform transition-all duration-300 hover:scale-105';
                 repoCard.innerHTML = `
-                    <h3 class="text-lg font-semibold text-gray-100">${repo.name}</h3>
-                    <p class="text-gray-400 mt-2">${repo.description || 'Keine Beschreibung vorhanden.'}</p>
-                    <a href="${repo.html_url}" target="_blank" class="text-rose-600 mt-2 inline-block">Auf GitHub ansehen →</a>
-                `;
+                        <h3 class="text-base sm:text-lg font-semibold text-gray-100 mb-2">${repo.name}</h3>
+                        <p class="text-gray-400 text-sm sm:text-base mt-2 mb-4">${repo.description || 'Keine Beschreibung vorhanden.'}</p>
+                        <a href="${repo.html_url}" target="_blank" class="text-rose-600 mt-2 inline-block text-sm sm:text-base hover:underline">Auf GitHub ansehen →</a>
+                    `;
                 repoList.appendChild(repoCard);
             });
         })
         .catch(err => {
-            repoList.innerHTML = '<p class="text-gray-400">Repos konnten nicht geladen werden.</p>';
+            repoList.innerHTML = '<p class="text-gray-400 text-sm sm:text-base">Repos konnten nicht geladen werden.</p>';
         });
 
     const topBtn = document.getElementById('topBtn');
@@ -232,19 +268,101 @@
             topBtn.classList.add('hidden');
         }
     });
+
     topBtn.addEventListener('click', () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    document.querySelectorAll('#skills .w-full > div').forEach(bar => {
-        const width = bar.style.width;
+    const skillBars = document.querySelectorAll('.skill-bar');
+    skillBars.forEach(bar => {
+        const width = bar.getAttribute('data-width');
         bar.style.width = '0';
-        setTimeout(() => { bar.style.width = width; }, 500);
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        entry.target.style.width = width;
+                    }, 200);
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+
+        observer.observe(bar);
     });
+
     window.addEventListener('scroll', () => {
         const progress = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
         document.getElementById('progressBar').style.width = progress + '%';
     });
+
+    const contactForm = document.getElementById('contactForm');
+    const statusMessage = document.getElementById('statusMessage');
+    const submitBtn = document.getElementById('submitBtn');
+    const buttonText = document.getElementById('buttonText');
+
+    contactForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        submitBtn.disabled = true;
+        buttonText.textContent = 'Wird gesendet...';
+
+        setTimeout(() => {
+            statusMessage.textContent = 'Nachricht erfolgreich gesendet!';
+            statusMessage.className = 'mt-4 p-3 rounded bg-green-600 text-white';
+            statusMessage.classList.remove('hidden');
+
+            contactForm.reset();
+            submitBtn.disabled = false;
+            buttonText.textContent = 'Absenden';
+
+            setTimeout(() => {
+                statusMessage.classList.add('hidden');
+            }, 5000);
+        }, 2000);
+    });
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                const offsetTop = target.offsetTop - 80;
+                window.scrollTo({
+                    top: offsetTop,
+                    behavior: 'smooth'
+                });
+            }
+        });
+    });
+
+    function handleResize() {
+        if (window.innerWidth >= 768) {
+            mobileMenu.classList.remove('open');
+        }
+    }
+
+    window.addEventListener('resize', handleResize);
+
+    let scrollTimeout;
+    function debounceScroll(func, wait) {
+        return function executedFunction(...args) {
+            const later = () => {
+                clearTimeout(scrollTimeout);
+                func.apply(this, args);
+            };
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(later, wait);
+        };
+    }
+
+    const debouncedProgressUpdate = debounceScroll(() => {
+        const progress = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+        document.getElementById('progressBar').style.width = progress + '%';
+    }, 10);
+
+    window.addEventListener('scroll', debouncedProgressUpdate);
 </script>
 </body>
 </html>
