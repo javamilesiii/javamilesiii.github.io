@@ -242,10 +242,11 @@
     });
 
     const repoList = document.getElementById('repo-list');
+    const excludedRepos = ['javamilesiii.github.io', 'javamilesiii'];
     fetch('https://api.github.com/users/javamilesiii/repos')
         .then(res => res.json())
         .then(data => {
-            data.slice(0, 6).forEach(repo => {
+            data.filter(repo => !excludedRepos.includes(repo.name)).slice(0, 6).forEach(repo => {
                 const repoCard = document.createElement('div');
                 repoCard.className = 'bg-gray-800 rounded shadow p-4 hover:bg-gray-700 transform transition-all duration-300 hover:scale-105';
                 repoCard.innerHTML = `
