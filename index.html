@@ -49,10 +49,10 @@
 <section class="min-h-screen flex flex-col items-center justify-center bg-gray-900 reveal text-center px-4 pt-16">
     <h1 class="responsive-title font-extrabold text-rose-600 mb-4 fade-in glitch" data-text="Hallo, ich bin Loïc Matthey">Hallo, ich bin Loïc Matthey</h1>
     <p id="typing" class="text-gray-400 responsive-subtitle max-w-xl mx-auto mb-6 min-h-[2rem]"></p>
-    <!--<a href="assets/lebenslauf.pdf" download class="bg-rose-600 hover:bg-red-400 px-4 py-3 sm:px-6 rounded text-white font-semibold transition transform hover:scale-105 relative overflow-hidden text-sm sm:text-base">
+    <a href="assets/lebenslauf.pdf" download class="bg-rose-600 hover:bg-red-400 px-4 py-3 sm:px-6 rounded text-white font-semibold transition transform hover:scale-105 relative overflow-hidden text-sm sm:text-base">
         Lebenslauf herunterladen
         <span class="absolute inset-0 bg-white opacity-10 animate-pulse"></span>
-    </a>-->
+    </a>
 </section>
 <section id="about" class="py-16 sm:py-24 lg:py-32 bg-gray-800 reveal">
     <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
@@ -163,7 +163,7 @@
 <section id="grades" class="py-16 sm:py-24 lg:py-32 bg-gray-900 reveal">
     <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8">
         <h2 class="text-2xl sm:text-3xl text-amber-500 font-bold mb-6">Modulnoten</h2>
-        <!--<a href="assets/ModulNoten.pdf" download class="text-rose-600 underline responsive-text">Modulnoten Übersicht herunterladen (PDF)</a>-->
+        <a href="assets/modulnoten.pdf" download class="text-rose-600 underline responsive-text">Modulnoten Übersicht herunterladen (PDF)</a>
     </div>
 </section>
 <section id="contact" class="py-16 sm:py-24 lg:py-32 bg-gray-800">
@@ -171,11 +171,14 @@
         <h2 class="text-2xl sm:text-3xl text-amber-500 font-bold mb-6">Kontakt</h2>
         <p class="text-gray-400 responsive-text mb-6">Interesse an Zusammenarbeit? Lass uns gemeinsam etwas Grossartiges schaffen.</p>
         <form id="contactForm" class="flex flex-col space-y-4 max-w-md mx-auto">
-            <input type="text" name="user_name" placeholder="Name" required
+            <label for="name">Name</label>
+            <input id="name" type="text" name="user_name" required
                    class="bg-gray-700 text-white p-3 rounded focus:ring-2 focus:ring-rose-600 focus:outline-none text-sm sm:text-base">
-            <input type="email" name="user_email" placeholder="E-Mail" required
+            <label for="email">E-Mail</label>
+            <input id="email" type="email" name="user_email" required
                    class="bg-gray-700 text-white p-3 rounded focus:ring-2 focus:ring-rose-600 focus:outline-none text-sm sm:text-base">
-            <textarea name="message" placeholder="Nachricht" rows="4" required
+            <label for="message">Nachricht</label>
+            <textarea id="message" name="message" rows="4" required
                       class="bg-gray-700 text-white p-3 rounded focus:ring-2 focus:ring-rose-600 focus:outline-none resize-none text-sm sm:text-base"></textarea>
             <button type="submit" id="submitBtn"
                     class="bg-rose-600 hover:bg-red-400 px-4 py-3 rounded text-white transition transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed text-sm sm:text-base">
